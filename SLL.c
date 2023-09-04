@@ -48,7 +48,7 @@ void add_end(struct node *head,int info){
     ptr->link = temp;
 }
 
-void add_bw(struct node *head,int pos,int info){
+struct node* add_bw(struct node *head,int pos,int info){
     if(pos==1){
         head = add_first(head,info);
     }
@@ -61,9 +61,14 @@ void add_bw(struct node *head,int pos,int info){
             ptr = ptr->link;
             pos--;
         }
-        temp->link = ptr->link->link;
+        if(ptr->link==NULL){
+            ptr->link = temp;
+            temp-link = NULL;
+        }    
+        temp->link = ptr->link;
         ptr->link = temp;
     }
+    return head;
 }
 
 struct node* del_single1(struct node *head){
@@ -149,7 +154,7 @@ int main(){
             else{
                 printf("Enter position at which u want to add a node:");
                 scanf("%d",&pos);
-                void add_bw(head,pos,info);
+                head = add_bw(head,pos,info);
             }
             break;
         case 2:
