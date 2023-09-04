@@ -63,10 +63,12 @@ struct node* add_bw(struct node *head,int pos,int info){
         }
         if(ptr->link==NULL){
             ptr->link = temp;
-            temp-link = NULL;
-        }    
+            temp->link = NULL;
+        }
+        else{
         temp->link = ptr->link;
         ptr->link = temp;
+        }
     }
     return head;
 }
